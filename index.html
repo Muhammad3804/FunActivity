@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./styles.css">
+</head> 
+<body>
+
+    <div id="loginContainer">
+		<h1 class="loginText">HOLD UP.<br> REVEAL YOUR IDENTITY😠🔫<h1>
+        <h2 class="loginText2">Enter ID and Password</h2>
+        <input type="text" id="userId" placeholder="Enter ID">
+        <input type="password" id="userPassword" placeholder="Enter Password">
+        <button onclick="checkLogin()">Submit</button>
+    </div>
+
+    <div id="mainContainer" style="display: none;">
+        <div>
+            <h1 class="header_text">Will you be my girlfriend?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onclick="growYes()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const correctId = "Ashbie";  // Predefined ID
+        const correctPassword = "ToThePlutoAndBack"; // Predefined Password
+
+        function checkLogin() {
+            let userId = document.getElementById("userId").value;
+            let userPassword = document.getElementById("userPassword").value;
+
+            if (userId === correctId && userPassword === correctPassword) {
+                document.getElementById("loginContainer").style.display = "none";
+                document.getElementById("mainContainer").style.display = "block";
+            } else {
+                alert("Wrong credentials!\n*Calls for backup* We have an intruder here.\nI REPEAT WE HAVE AN INTRUDER HERE. EVERYONE GATHER UP AND GET YOUR ARMS READY🔫🔪🥊");
+            }
+        }
+
+        function nextPage() {
+            window.location.href = "yesGf.html";
+        }
+
+        function growYes() {
+            let yesButton = document.getElementById("yesButton");
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize * 1.5) + "px";
+            yesButton.style.padding = (currentSize * 1.5) + "px";
+
+            if (currentSize * 1.5 > window.innerWidth / 2) {
+                yesButton.style.fontSize = "100vw";
+                yesButton.style.width = "100vw";
+                yesButton.style.height = "100vh";
+                yesButton.innerText = "YES!";
+                document.body.innerHTML = ""; // Clear everything
+                document.body.appendChild(yesButton);
+            }
+        }
+    </script>
+
+</body>
+</html>

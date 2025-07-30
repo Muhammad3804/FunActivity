@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./yesGf_style.css">
+</head> 
+<body>
+
+    <div id="mainContainer">
+        <div>
+            <h1 class="header_text">YAY. Will you be my valentine's asw? :3</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media.tenor.com/ZPHHiCRxrlsAAAAj/happy-happy-happy-cat.gif" alt="Cute animated illustration">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onclick="growYes()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function growYes() {
+            let yesButton = document.getElementById("yesButton");
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize * 1.5) + "px";
+            yesButton.style.padding = (currentSize * 1.5) + "px";
+
+            if (currentSize * 1.5 > window.innerWidth / 2) {
+                yesButton.style.fontSize = "100vw";
+                yesButton.style.width = "100vw";
+                yesButton.style.height = "100vh";
+                yesButton.innerText = "YES!";
+                document.body.innerHTML = ""; // Clear everything
+                document.body.appendChild(yesButton);
+            }
+        }
+    </script>
+
+</body>
+</html>
